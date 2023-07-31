@@ -1,0 +1,155 @@
+:root {
+    --color-text-const: #EDEDED;
+    --color-backgroud: rgb(158, 152, 214);
+    --color-grey: #eeebe8;
+    --color-salmon: #FF8787;
+    --color-rosado: #E26868;
+    --color-rosado-o: #c53737;
+
+}
+
+a {
+
+    display: flex;
+    align-self: center;
+}
+
+p {
+    margin: 0;
+}
+
+body {
+    background-color: var(--color-grey);
+}
+
+nav img,
+nav li {
+    padding: 0 !important;
+    height: 5vh;
+    display: flex;
+}
+
+nav img {
+    opacity: 0.5;
+}
+
+nav img:hover {
+    opacity: 1;
+}
+
+footer img {
+    opacity: 0.4;
+}
+
+footer img:hover {
+    opacity: 0.8;
+}
+
+#headerCarousel,
+#headerCarousel div {
+    width: 100vw;
+}
+
+.radiusCard {
+    border-radius: 10px;
+}
+
+h1 {
+    color: var(--color-text-const);
+    position: absolute;
+    z-index: 5;
+    margin: 25vw;
+}
+
+h2 {
+    text-align: center;
+    color: var(--color-rosado);
+}
+
+#cardsIndex img {
+    height: 13rem;
+    object-fit: cover;
+}
+
+th,
+td {
+    height: 2rem;
+}
+
+#formCont {
+    background-color: var(--color-salmon);
+}
+
+table {
+    margin-bottom: 0 !important;
+}
+
+hr {
+    color: var(--color-rosado);
+}
+
+footer {
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+    border-color: var(--color-rosado);
+    gap: 1rem;
+    background-color: var(--color-salmon);
+    justify-content: center;
+}
+
+footer div {
+
+    display: flex;
+    justify-content: space-around;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    #headerCarousel,
+    #headerCarousel div {
+        height: auto;
+        width: 100vw;
+    }
+
+    footer {
+        justify-content: space-between;
+    }
+
+    #mainInx {
+        height: auto;
+    }
+
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+
+    #headerCarousel,
+    #headerCarousel div {
+        height: 30vh;
+        width: 100vw;
+    }
+
+    #navbarNav {
+        display: flex;
+        justify-content: end;
+    }
+
+    #cardsIndex>div {
+        width: 18vw;
+    }
+
+    #mainInx {
+        height: auto;
+    }
+
+    footer {
+        height: 20vh;
+        justify-content: space-between;
+    }
+
+    #detailCard p {
+        font-size: 2rem;
+    }
+}
