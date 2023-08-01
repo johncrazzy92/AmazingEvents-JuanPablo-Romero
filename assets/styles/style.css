@@ -128,7 +128,7 @@ footer div {
     #headerCarousel,
     #headerCarousel div {
         height: 30vh;
-        width: 100vw;
+        width: 100vw !important;
     }
 
     #navbarNav {
@@ -145,7 +145,7 @@ footer div {
     }
 
     footer {
-        height: 20vh;
+        min-height: 20vh;
         justify-content: space-between;
     }
 
