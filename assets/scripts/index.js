@@ -28,7 +28,7 @@ const divPrice = document.createElement("div")
 divPrice.className = "col-12 d-flex justify-content-between align-items-center"
 
 const pPrice = document.createElement("p")
-pPrice.textContent = `Price : $5`
+pPrice.textContent = `Price : $${event.price}`
 
 const aPrice = document.createElement("a")
 aPrice.className ="btn btn-outline-danger btn-sm"
