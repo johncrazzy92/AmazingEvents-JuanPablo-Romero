@@ -115,13 +115,18 @@ footer div {
     #mainInx {
         height: auto;
     }
+    #filterBox{
+        justify-content: center !important;
+    }
 
 }
 
 
 
 @media only screen and (min-width: 1024px) {
-
+    #message{
+        height: 30vh;
+    }
     #headerCarousel,
     #headerCarousel div {
         height: 30vh;
