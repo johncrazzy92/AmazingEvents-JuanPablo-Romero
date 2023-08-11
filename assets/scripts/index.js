@@ -67,7 +67,7 @@ pPrice.textContent = `Price : $${event.price}`
 
 const aPrice = document.createElement("a")
 aPrice.className ="btn btn-outline-danger btn-sm"
-aPrice.setAttribute("href","./assets/pages/details.html")
+aPrice.setAttribute("href",`./assets/pages/details.html?_id=${event._id}`)
 aPrice.textContent ="Details"
 
 interiorCard.appendChild(divPrice)
@@ -147,7 +147,6 @@ function updateFilteredCards(input, events) {
             }
         } else {
             let intersection = filteredByCheck.filter(event => filteredBySearch.includes(event)); // nuevo array con filtro para checkbox en base a lo que tenga search
-            console.log(intersection);
             if (intersection.length !== 0) {
                 cardSection.innerHTML = "";
                 sendCards(intersection, cardSection);

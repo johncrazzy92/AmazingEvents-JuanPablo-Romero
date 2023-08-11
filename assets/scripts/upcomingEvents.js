@@ -67,9 +67,8 @@ pPrice.textContent = `Price : $${event.price}`
 
 const aPrice = document.createElement("a")
 aPrice.className ="btn btn-outline-danger btn-sm"
-aPrice.setAttribute("href","./details.html")
+aPrice.setAttribute("href",`./details.html?_id=${event._id}`)
 aPrice.textContent ="Details"
-
 interiorCard.appendChild(divPrice)
 divPrice.appendChild(pPrice)
 divPrice.appendChild(aPrice)
@@ -139,7 +138,7 @@ function updateFilteredCards(input, events) {
         let filteredBySearch = searchFiltro(input, events);  //invoco funcion para generarme un array con una lista de objetos filtrados por el search
 
         if (filteredByCheck.length === 0) {    // si el array de checkbox es igual a 0 solo mostrara el array de search
-            if (filteredBySearch.length !== 0) {
+            if (filteredBySearch.length !== 0) {  // si search contiene un objeto o mas, imprime su card
                 cardSection.innerHTML = "";
                 sendCards(filteredBySearch, cardSection);
             } else {
@@ -149,7 +148,6 @@ function updateFilteredCards(input, events) {
             }
         } else {
             let intersection = filteredByCheck.filter(event => filteredBySearch.includes(event)); // nuevo array con filtro para checkbox en base a lo que tenga search
-            console.log(intersection);
             if (intersection.length !== 0) {
                 cardSection.innerHTML = "";
                 sendCards(intersection, cardSection);
