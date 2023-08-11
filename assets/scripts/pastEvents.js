@@ -1,9 +1,12 @@
 const cardSection = document.getElementById("cardsIndex");
 
+let newArrayEvents = Array.from(data.events)
+let events = newArrayEvents.filter( event => event.date < data.currentDate)
+
 //----------Checkbox and label
 
 let filterBox = document.getElementById("filterBox")
-let events = data.events
+
 
 function checkboxCreator (event){
     let checkboxFilter = document.createElement("input")
