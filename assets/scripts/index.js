@@ -5,6 +5,19 @@ const cardSection = document.getElementById("cardsIndex");
 let filterBox = document.getElementById("filterBox")
 let events = data.events
 
+//-----------fetch
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+    .then(respuesta => respuesta.json())
+    .then(respuesta =>{ 
+        let data = respuesta
+        
+        
+        })
+    .catch(error => {
+        console.error("hubo un erro :" ,error)
+    })
+
+
 function checkboxCreator (event){
     let checkboxFilter = document.createElement("input")
     checkboxFilter.className = "btn-check"
@@ -21,8 +34,6 @@ function labelCreator(event) {
     labelFilter.textContent = `${event}`
     return labelFilter
 }
-//---------------------- categorias en array
-let setCategory = Array.from( new Set((events.map( data => data.category))))
 //-----------------------appendchild a container
 function renderCheckFilter(set , container) {
     set.forEach(evento => {
@@ -30,6 +41,10 @@ function renderCheckFilter(set , container) {
         container.appendChild(labelCreator(evento))
     });
 }
+//---------------------- categorias en array
+let setCategory = Array.from( new Set((events.map( data => data.category))))
+
+//--------------crea checkbox
 
 renderCheckFilter(setCategory,filterBox)
 
@@ -94,35 +109,32 @@ let inputSearch = document.getElementById("inputBtn")
 
 //-----------------------------------Checkbox filter
 
-
-let checkboxAndLabelsArray = Array.from(document.querySelectorAll(".btn-check")) 
+let checkboxAndLabelsArray = Array.from(document.querySelectorAll(".btn-check")) //se crea un array cpm cada checkbox
 
 search.addEventListener( "click", event => {
-event.preventDefault()                          // evento para el buscador
-    updateFilteredCards(inputSearch, events);
-    
+event.preventDefault()                          //se le asigna un evento para el buscador
+updateFilteredCards(inputSearch, events);     //se ejecuta el filtro
+
 })
 
 checkboxAndLabelsArray.forEach( checkbtn => {
-    checkbtn.addEventListener("change", () =>{ // evento para los checkbox
-        updateFilteredCards(inputSearch, events);
+    checkbtn.addEventListener("change", () =>{ //se le asigna un evento para cada checkbox del array
+        updateFilteredCards(inputSearch, events); //se ejecuta el filtro
         
     })
 } )
 
-
-
 // filtro por checkbox
 function checkFilterCards(array) {
-    let checkbtn = document.querySelectorAll(".btn-check:checked")
-    let checkbtnList = Array.from(checkbtn).map( input => input.value)  // que contiene categoria de objeto
-    let filteredCheck = array.filter( event => checkbtnList.includes(event.category))  // de checklist  incluye (....) 
+    let checkbtn = document.querySelectorAll(".btn-check:checked") // se asigna una nodelist a checkbtn
+    let checkbtnList = Array.from(checkbtn).map( btn => btn.value)  // crea un array del node y en base a este crea un nuevo array con los valores de la propiedad value de cada objeto del array
+    let filteredCheck = array.filter( event => checkbtnList.includes(event.category))  // de checklist incluye (....) 
     return filteredCheck
 }
 
 //filtro por busqueda 
 function searchFiltro(input,array) {
-        let searchFilter = array.filter( event => event.name.toLowerCase().includes(input.value.toLowerCase()))
+    let searchFilter = array.filter( event => event.name.toLowerCase().includes(input.value.toLowerCase())) //si input esta vacio,contiene un "" y en includes cuando event.name se incluye en "" da true, por que cualquier cadena contiene una cadena vacia 
         return searchFilter
 }
 
@@ -140,13 +152,13 @@ function updateFilteredCards(input, events) {
             if (filteredBySearch.length !== 0) {
                 cardSection.innerHTML = "";
                 sendCards(filteredBySearch, cardSection);
-            } else {
-                cardSection.innerHTML = `<div id="message" class="col-12 d-flex justify-content-center align-items-center">
+            } else {                                                              //si no hay nada
+                cardSection.innerHTML = `<div id="message" class="col-12 d-flex justify-content-center align-items-center"> 
                     <p class="display-4"> "The searched event was not found."</p>
                 </div>`;
             }
         } else {
-            let intersection = filteredByCheck.filter(event => filteredBySearch.includes(event)); // nuevo array con filtro para checkbox en base a lo que tenga search
+            let intersection = filteredByCheck.filter(event => filteredBySearch.includes(event)); // nuevo array con filtro para checkbox en base a lo que tenga search / si el input no tiene nada, se mostrara solo lo de checkbox
             if (intersection.length !== 0) {
                 cardSection.innerHTML = "";
                 sendCards(intersection, cardSection);
