@@ -76,31 +76,22 @@
     <main class=" d-flex flex-column gap-4 col-12 my-4">
         <!-- category -->
         <div class="d-flex flex-wrap m-3 gap-3 justify-content-between">
-            <div class="btn-group btn-group-sm d-flex flex-wrap col-xl-5" role="group"
-                aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check " name="btnradio" id="btnradio1" checked>
-                <label class="btn btn-outline-danger " for="btnradio1">Category 1</label>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
-                <label class="btn btn-outline-danger " for="btnradio2">Category 3</label>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
-                <label class="btn btn-outline-danger " for="btnradio3">Category 3</label>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio4">
-                <label class="btn btn-outline-danger " for="btnradio4">Category 4</label>
-                <input type="radio" class="btn-check " name="btnradio" id="btnradio5">
-                <label class="btn btn-outline-danger " for="btnradio5">Category 5</label>
+            <div id="filterBox" class="btn-group btn-group-sm d-flex flex-wrap   col-12 col-xl-8 col-xxl-8 " role="group" aria-label="Basic radio toggle button group">
+              <!-- checkboxes-->
+              
             </div>
             <!-- search -->
-            <div class="container-fluid col-xl-2 m-xl-0">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg></button>
-                </form>
+            <div class="container-fluid col-md-10 col-lg-4 col-xl-2 m-xl-0">
+              <form class="d-flex" role="search">
+                <input id="inputBtn" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button id="searchBtn" class="btn btn-outline-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg></button>
+              </form>
             </div>
-        </div>
+          </div>
         <!-- cards -->
         <section id="cardsIndex" class="container-fluid d-flex flex-wrap justify-content-center gap-5 ">
             <!-- -->
