@@ -37,7 +37,7 @@ function cardMaker(event) {
                     </div>
                 </div>
             </div> `    
-    } else{
+    } else {
         return `<div class="card mb-3 shadow-lg" style="max-width: 80vw;">
 <div class="row g-0">
     <div class="col-md-6 d-flex justify-content-center">
