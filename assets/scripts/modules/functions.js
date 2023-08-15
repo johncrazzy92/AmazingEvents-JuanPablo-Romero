@@ -1,3 +1,5 @@
+//-----------------Index---------------------
+
 //----crador de checkboxes
 export function checkboxCreator (event){
     let checkboxFilter = document.createElement("input")
@@ -49,6 +51,7 @@ interiorCard.appendChild(h2)
 interiorCard.appendChild(pDescription)
 
 //----------------------
+const pagNameRef = document.getElementsByClassName("pagRef")
 
 const divPrice = document.createElement("div")
 divPrice.className = "col-12 d-flex justify-content-between align-items-center"
@@ -58,7 +61,10 @@ pPrice.textContent = `Price : $${event.price}`
 
 const aPrice = document.createElement("a")
 aPrice.className ="btn btn-outline-danger btn-sm"
-aPrice.setAttribute("href",`./assets/pages/details.html?_id=${event._id}`)
+if(pagNameRef.id !== "pagRef"){
+    aPrice.setAttribute("href",`./assets/pages/details.html?_id=${event._id}`)}
+    else {aPrice.setAttribute("href",`./details.html?_id=${event._id}`);}
+
 aPrice.textContent ="Details"
 
 interiorCard.appendChild(divPrice)
@@ -122,3 +128,81 @@ export function updateFilteredCards(input, events,container) {
         }
     }
 }
+
+//------------------details---------------------
+
+function cardMakerDetails(event,date) {
+    if (event.date < date ) {
+        return `<div class="card mb-3 shadow-lg" style="max-width: 80vw;">
+                <div class="row g-0">
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <img src="${event.image}" class="img-fluid object-fit-cover rounded-start w-100" alt="${event.category}">
+                    </div>
+                    <div class="col-md-6 d-md-flex ">
+                        <div id="detailCard" class="card-body d-flex flex-column justify-content-center gap-4">
+                            <h2 class="card-title fw-bold display-5">${event.name}</h2>
+                            <ul class="d-flex flex-column gap-3">
+                                <li>Date: ${event.date}</li>
+                                <li class="card-text">${event.description}</li>
+                                <li>
+                                    Category: ${event.category}
+                                </li>
+                                <li>
+                                    Place: ${event.place}
+                                </li>
+                                <li>
+                                    Capacity: ${event.capacity}
+                                </li>
+                                <li>
+                                    Assistance: ${event.assistance}
+                                </li>
+                                <li>
+                                    Price: ${event.price}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> `    
+    } else {
+        return `<div class="card mb-3 shadow-lg" style="max-width: 80vw;">
+<div class="row g-0">
+    <div class="col-md-6 d-flex justify-content-center">
+        <img src="${event.image}" class="img-fluid object-fit-cover rounded-start w-100" alt="${event.category}">
+    </div>
+    <div class="col-md-6 d-md-flex ">
+        <div id="detailCard" class="card-body d-flex flex-column justify-content-center gap-4">
+            <h2 class="card-title fw-bold display-5">${event.name}</h2>
+            <ul class="d-flex flex-column gap-3">
+                <li>Date: ${event.date}</li>
+                <li class="card-text">${event.description}</li>
+                <li>
+                    Category: ${event.category}
+                </li>
+                <li>
+                    Place: ${event.place}
+                </li>
+                <li>
+                    Capacity: ${event.capacity}
+                </li>
+                <li>
+                    Estimate: ${event.estimate}
+                </li>
+                <li>
+                    Price: ${event.price}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div> `
+
+    }
+}
+
+export function sendCardDetails(event,container,date) {
+    container.innerHTML = cardMakerDetails(event,date)
+}
+
+
+
