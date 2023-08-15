@@ -2,10 +2,23 @@ let detailsCont = document.getElementById("detailCard")
 
 let locationSrc = location.search    //se accede a url de pagina
 let srcParams = new URLSearchParams(locationSrc) //genera obj urlsrc
-let idParams = srcParams.get("_id")
+let idParams = srcParams.get(`_id`)
 
-function cardMaker(event) {
-    if (event.date < data.currentDate ) {
+//-----------fetch
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+.then(respuesta => respuesta.json())
+.then(respuesta =>{ 
+        let events = respuesta.events
+        let eventDate = respuesta.currentDate
+        let dataCard = events.find( event => event._id == idParams) 
+        sendCard(dataCard,detailsCont,eventDate)
+        })
+    .catch(error => {
+        console.error("hubo un error :" ,error)
+    })
+
+function cardMaker(event,date) {
+    if (event.date < date ) {
         return `<div class="card mb-3 shadow-lg" style="max-width: 80vw;">
                 <div class="row g-0">
                     <div class="col-md-6 d-flex justify-content-center">
@@ -73,12 +86,9 @@ function cardMaker(event) {
     }
 }
 
-let dataCard = data.events.find( events => events._id === idParams) 
-
-function sendCard(event,container) {
-    container.innerHTML = cardMaker(event)
+function sendCard(event,container,date) {
+    container.innerHTML = cardMaker(event,date)
 }
-sendCard(dataCard,detailsCont)
 
 
 
