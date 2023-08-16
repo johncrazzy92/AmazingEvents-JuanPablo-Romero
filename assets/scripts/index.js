@@ -24,17 +24,6 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
     //---primeras cartas
     sendCards(events, cardSection);
 
-    //---events
-  })
-  .catch((error) => {
-    console.error("hubo un erro :", error);
-  });
-
-//-----------fetch events
-fetch("https://mindhub-xj03.onrender.com/api/amazing")
-  .then((respuesta) => respuesta.json())
-  .then((respuesta) => {
-    let events = respuesta.events;
     // --------------------input
 
     let search = document.getElementById("searchBtn");
@@ -49,6 +38,10 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
       event.preventDefault(); //se le asigna un evento para el buscador
       updateFilteredCards(inputSearch, events, cardSection); //se ejecuta el filtro
     });
+    inputSearch.addEventListener("keyup", (event) => {
+      event.preventDefault(); //se le asigna un evento para el buscador
+      updateFilteredCards(inputSearch, events, cardSection); //se ejecuta el filtro
+    });
 
     checkboxAndLabelsArray.forEach((checkbtn) => {
       checkbtn.addEventListener("change", () => {
@@ -56,6 +49,17 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
         updateFilteredCards(inputSearch, events, cardSection); //se ejecuta el filtro
       });
     });
+  })
+  .catch((error) => {
+    console.error("hubo un erro :", error);
+  });
+
+//-----------fetch events
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+  .then((respuesta) => respuesta.json())
+  .then((respuesta) => {
+    let events = respuesta.events;
+    
   })
   .catch((error) => {
     console.error("hubo un erro :", error);

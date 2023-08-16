@@ -33,22 +33,7 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
 
     //--------------crea checkbox
     renderCheckFilter(setCategory, filterBox);
-  })
-  .catch((error) => {
-    console.error("hubo un erro :", error);
-  });
 
-
-//-----------fetch events
-fetch("https://mindhub-xj03.onrender.com/api/amazing")
-  .then((respuesta) => respuesta.json())
-  .then((respuesta) => {
-    let data = respuesta;
-    //-----filtro de fecha
-    let newArrayEvents = Array.from(data.events);
-    let events = newArrayEvents.filter(
-      (event) => event.date > data.currentDate
-    );
     // --------------------input
 
     let search = document.getElementById("searchBtn");
@@ -63,6 +48,11 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
       event.preventDefault(); //se le asigna un evento para el buscador
       updateFilteredCards(inputSearch, events, cardSection); //se ejecuta el filtro
     });
+    
+    inputSearch.addEventListener("keyup", (event) => {
+      event.preventDefault(); //se le asigna un evento para el buscador
+      updateFilteredCards(inputSearch, events, cardSection); //se ejecuta el filtro
+    });
 
     checkboxAndLabelsArray.forEach((checkbtn) => {
       checkbtn.addEventListener("change", () => {
@@ -74,3 +64,4 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
   .catch((error) => {
     console.error("hubo un erro :", error);
   });
+
