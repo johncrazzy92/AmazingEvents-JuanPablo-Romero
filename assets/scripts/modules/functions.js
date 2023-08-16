@@ -204,5 +204,39 @@ export function sendCardDetails(event,container,date) {
     container.innerHTML = cardMakerDetails(event,date)
 }
 
+//--- stats
+
+export function highestAssistCalculator(array) {
+    let allAssist = (porcentajeDePersonas(array))
+    allAssist.sort((a,b) => {return a.assist - b.assist})
+    return allAssist[allAssist.length - 1]
+}
+export function lowestAssistCalculator(array) {
+    let allAssist = (porcentajeDePersonas(array))
+    allAssist.sort((a,b) => {return a.assist - b.assist})
+    return allAssist[0]
+}
+export function postFirstTable(obj,id) {
+    let cont = document.getElementById(id)
+    if (obj.assist !== undefined) {
+        cont.textContent = `${obj.name} (${obj.assist})`   
+    } else {
+        cont.textContent = `${obj.name} (${obj.capacity})`
+    }
+}
+function porcentajeDePersonas(array) {
+    let arrayAssist = []
+    for (const evento of array) {
+    let assist =  evento.assistance * 100 / evento.capacity
+    arrayAssist.push({name: evento.name ,assist: (assist).toFixed(2)})
+    }
+    return arrayAssist
+}
+export function largestEvent(array) {
+    let largestArray = array.sort((a,b)=>{return b.capacity - a.capacity})
+    let largest = largestArray[0]
+    return {name :largest.name, capacity:largest.capacity}
+}
+
 
 
