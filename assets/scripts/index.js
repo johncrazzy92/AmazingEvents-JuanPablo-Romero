@@ -7,6 +7,9 @@ import {
 } from "./modules/functions.js";
 
 const cardSection = document.getElementById("cardsIndex");
+const pagNameRef = document.getElementsByClassName("pagRef")
+console.log(pagNameRef[0].id);
+
 
 //----------Checkbox and label
 

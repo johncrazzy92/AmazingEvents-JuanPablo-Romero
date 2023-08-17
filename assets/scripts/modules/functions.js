@@ -61,7 +61,7 @@ pPrice.textContent = `Price : $${event.price}`
 
 const aPrice = document.createElement("a")
 aPrice.className ="btn btn-outline-danger btn-sm"
-if(pagNameRef.id !== "pagRef"){
+if(pagNameRef[0].id){
     aPrice.setAttribute("href",`./assets/pages/details.html?_id=${event._id}`)}
     else {aPrice.setAttribute("href",`./details.html?_id=${event._id}`);}
 
@@ -219,7 +219,7 @@ export function lowestAssistCalculator(array) {
 export function postFirstTable(obj,id) {
     let cont = document.getElementById(id)
     if (obj.assist !== undefined) {
-        cont.textContent = `${obj.name} (${obj.assist})`   
+        cont.textContent = `${obj.name} (${obj.assist} %)`   
     } else {
         cont.textContent = `${obj.name} (${obj.capacity})`
     }
